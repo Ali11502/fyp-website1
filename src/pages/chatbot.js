@@ -347,10 +347,7 @@ const ChatBot = () => {
               <label htmlFor="proMode" className="text-gray-700">Pro Mode</label>
             </div>
             
-            <div className="text-gray-400 text-xs text-right">
-              Activate Windows
-              <div className="text-xs text-gray-300">Go to Settings to activate Windows</div>
-            </div>
+            
           </div>
         </div>
       </div>

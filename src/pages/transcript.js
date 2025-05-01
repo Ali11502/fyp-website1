@@ -1,44 +1,105 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Loader2 } from 'lucide-react';
 
 const Transcript = () => {
   const location = useLocation();
-  const [videoTitle, setVideoTitle] = useState('A simple way to break a bad habit | Judson Brewer | TED');
-  
-  // Full transcript text from the screenshot
-  const transcriptText = `When I was first learning to meditate, the instruction was to simply pay attention to my breath, and when my mind wandered, to bring it back. Sounded simple enough. Yet I'd sit on these silent retreats, sweating through T-shirts in the middle of winter. I'd take naps every chance I got because it was really hard work. Actually, it was exhausting. The instruction was simple enough but I was missing something really important. So why is it so hard to pay attention? Well, studies show that even when we're really trying to pay attention to something -- like maybe this talk -- at some point, about half of us will drift off into a daydream, or have this urge to check our Twitter feed. So what's going on here? It turns out that we're fighting one of the most evolutionarily-conserved learning processes currently known in science, one that's conserved back to the most basic nervous systems known to man. This reward-based learning process is called positive and negative reinforcement, and basically goes like this. We see some food that looks good, our brain says, "Calories! ... Survival!" We eat the food, we taste it -- it tastes good. And especially with sugar, our bodies send a signal to our brain that says, "Remember what you're eating and where you found it." We lay down this context-dependent memory and learn to repeat the process next time. See food, eat food, feel good, repeat. Trigger, behavior, reward. Simple, right? Well, after a while, our creative brains say, "You know what? You can use this for more than just remembering where food is. You know, next time you feel bad, why don't you try eating something good so you'll feel better?" We thank our brains for the great idea, try this and quickly learn that if we eat chocolate or ice cream when we're mad or sad, we feel better. Same process, just a different trigger. Instead of this hunger signal coming from our stomach, this emotional signal -- feeling sad -- triggers that urge to eat. Maybe in our teenage years, we were a nerd at school, and we see those rebel kids outside smoking and we think, "Hey, I want to be cool." So we start smoking. The Marlboro Man wasn't a dork, and that was no accident. See cool, smoke to be cool, feel good. Repeat. Trigger, behavior, reward. And each time we do this, we learn to repeat the process and it becomes a habit. So later, feeling stressed out triggers that urge to smoke a cigarette or to eat something sweet. Now, with these same brain processes, we've gone from learning to survive to literally killing ourselves with these habits. Obesity and smoking are among the leading preventable causes of morbidity and mortality in the world. So back to my breath. What if instead of fighting our brains, or trying to force ourselves to pay attention, we instead tapped into this natural, reward-based learning process ... but added a twist? What if instead we just got really curious about what was happening in our momentary experience? I'll give you an example. In my lab, we studied whether mindfulness training could help people quit smoking. Now, just like trying to force myself to pay attention to my breath, they could try to force themselves to quit smoking. And the majority of them had tried this before and failed -- on average, six times. Now, with mindfulness training, we dropped the bit about forcing and instead focused on being curious. In fact, we even told them to smoke. What? Yeah, we said, "Go ahead and smoke, just be really curious about what it's like when you do." And what did they notice? Well here's an example from one of our smokers. She said, "Mindful smoking: smells like stinky cheese and tastes like chemicals, YUCK!" Now, she knew, cognitively that smoking was bad for her, that's why she joined our program. What she discovered just by being curiously aware when she smoked was that smoking tastes like shit. (Laughter) Now, she moved from knowledge to wisdom. She moved from knowing in her head that smoking was bad for her to knowing it in her bones, and the spell of smoking was broken. She started to become disenchanted with her behavior. Now, the prefrontal cortex, that youngest part of our brain from an evolutionary perspective, it understands on an intellectual level that we shouldn't smoke. And it tries its hardest to help us change our behavior, to help us stop smoking, to help us stop eating that second, that third, that fourth cookie. We call this cognitive control. We're using cognition to control our behavior. Unfortunately, this is also the first part of our brain that goes offline when we get stressed out, which isn't that helpful. Now, we can all relate to this in our own experience. We're much more likely to do things like yell at our spouse or kids when we're stressed out or tired, even though we know it's not going to be helpful. We just can't help ourselves. So this is the brain's reward-based learning system. When we get stressed out, this is the brain's reward-based learning process. So how can we tap into this? Well, we can use mindfulness. And this is where the twist comes in. With mindfulness training, we're taught to become curious about the actual sensations of the craving itself. And this is really different from our usual response, which is to try to make the craving go away by eating the chocolate or, you know, trying to think about something else or trying to manage our stress. So typically we try to do something else. Here we just notice the sensations, we notice the thoughts, which are often things like, "I need a cigarette, I need a cookie," and we notice our bodies, and we notice that our bodies are not at war, our breath isn't stopping. We're actually OK.
-
-And from the neuroscience perspective, this is really important, because what we're doing is we're staying with that uncomfortable state, but we're not feeding it. We're not trying to make it go away. We're not getting caught up in it. And this actually turns out to be really, really important.
-
-Imagine walking through a dark hallway. You step on something soft and squishy, and immediately you jump back, and you think, "Eww, what did I step on?" But instead of jumping back, let's say you pause, and you crouch down -- like you need to pee (Laughter) -- and you shine your flashlight. (Laughter) And you look, and you say, "Oh, it's a slimy mushroom." And your body calms down, and you can keep walking. From a brain perspective, that flashlight is your prefrontal cortex, and that slimy mushroom is just, you know, maybe your craving for chocolate. But when we shine the flashlight, we see, "Oh, I don't have to eat the chocolate. I'm not going to die from this craving. It's not so bad."
-
-I think of ... I think of the 1987 movie "Wall Street." Right? We have Michael Douglas as that icon, Gordon Gekko, and he says that thing that we love to hate, but a lot of us also kind of ... kinda love. He says, "Greed is good." Right? So we can see how greed is good, and we can also see how from a reward-based learning perspective, greed is good. Because greed is this drive that we have for cake, for sex, for water, for all of these things that we need to survive. But here, we can be curious about craving itself. And what happens when you bring that flashlight of curiosity close to the craving? [Poof!] It changes. We notice it's not permanent.
-
-So one of our smokers actually described this as a kind of surfing the urge. She said, "When I first started practicing, the urge to smoke would come, it would peak, I would feel like I was going to die if I didn't smoke a cigarette, and then it would go away. And now when I have the urge to smoke, I ride it like a wave. It comes, it peaks, it goes away, and I don't smoke."
-
-So with this training, our subjects learned to see their cravings in a different light. Instead of getting caught up in them, they simply watched them arise and dissolve. And they begin to notice that these things were not permanent. They weren't good or bad. They were simply mental states. And they noticed that they could ride these just like a wave, just like a wave, they crash on the shore, and then they recede back out to sea.`;
+  const [transcript, setTranscript] = useState('');
+  const [videoTitle, setVideoTitle] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // You could fetch video data & transcript here in a real app
-  }, []);
+    const loadTranscript = async () => {
+      setLoading(true);
+      setError(null);
+
+      try {
+        // Get video info from location state (passed from YouTubeCardWithModal)
+        if (location.state?.videoInfo) {
+          setVideoTitle(location.state.videoInfo.title || 'YouTube Transcript');
+        }
+
+        // Get transcript from location state if available
+        if (location.state?.transcriptInfo?.full_text) {
+          setTranscript(location.state.transcriptInfo.full_text);
+          setLoading(false);
+          return;
+        }
+
+        // Get task ID from location state
+        const taskId = location.state?.taskId;
+        
+        if (!taskId) {
+          throw new Error('No task ID provided. Please process a YouTube video first.');
+        }
+
+        // Read the transcript file directly using the window.fs API
+        try {
+          // Path to the transcript file based on the provided information
+          const filePath = `downloads/full_transcript.txt`;
+          const fileContent = await window.fs.readFile(filePath, { encoding: 'utf8' });
+          setTranscript(fileContent);
+        } catch (fileErr) {
+          console.error('Error reading transcript file:', fileErr);
+          
+          // Try alternative file path with task ID
+          try {
+            const altFilePath = `downloads/${taskId}_transcript.txt`;
+            const altFileContent = await window.fs.readFile(altFilePath, { encoding: 'utf8' });
+            setTranscript(altFileContent);
+          } catch (altFileErr) {
+            throw new Error('Could not read transcript file. The file may not exist or is inaccessible.');
+          }
+        }
+      } catch (err) {
+        console.error('Error loading transcript:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadTranscript();
+  }, [location]);
+
+  if (loading) {
+    return (
+      <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col items-center justify-center min-h-screen">
+        <Loader2 className="w-10 h-10 text-purple-600 animate-spin mb-4" />
+        <p className="text-gray-600">Loading transcript...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="max-w-5xl mx-auto px-6 py-8">
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+          <p className="font-medium">Error loading transcript</p>
+          <p className="text-red-600">{error}</p>
+          <p className="mt-2">Please try processing your video again.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-8">
-      <h1 className="text-4xl font-bold text-gray-800 mb-8">Transcript</h1>
+      <h1 className="text-4xl font-bold text-gray-800 mb-2">{videoTitle}</h1>
+      <h2 className="text-lg text-gray-600 mb-8">Transcript</h2>
       
       <div className="bg-white rounded-xl p-6 shadow-sm border">
-        <div className="text-gray-700 leading-relaxed space-y-4">
-          {/* Split the transcript into paragraphs and render them */}
-          {transcriptText.split('\n\n').map((paragraph, index) => (
-            <p key={index} className="mb-4">{paragraph}</p>
-          ))}
-        </div>
-      </div>
-      
-      {/* "Activate Windows" watermark in bottom right - just like in the screenshot */}
-      <div className="fixed bottom-4 right-4 text-center opacity-70">
-        <div className="text-gray-400 text-sm">Activate Windows</div>
-        <div className="text-gray-400 text-xs">Go to Settings to activate Windows</div>
+        {transcript ? (
+          <div className="text-gray-700 leading-relaxed space-y-4">
+            {/* Split the transcript into paragraphs and render them */}
+            {transcript.split('\n\n').map((paragraph, index) => (
+              <p key={index} className="mb-4">{paragraph}</p>
+            ))}
+          </div>
+        ) : (
+          <p className="text-gray-500">No transcript available for this video.</p>
+        )}
       </div>
     </div>
   );
