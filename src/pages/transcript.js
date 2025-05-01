@@ -5,7 +5,7 @@ import { Loader2 } from 'lucide-react';
 const Transcript = () => {
   const location = useLocation();
   const [transcript, setTranscript] = useState('');
-  const [videoTitle, setVideoTitle] = useState('');
+  const [videoTitle, setVideoTitle] = useState('YouTube Transcript');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -15,42 +15,26 @@ const Transcript = () => {
       setError(null);
 
       try {
-        // Get video info from location state (passed from YouTubeCardWithModal)
+        // Get video info from location state if available
         if (location.state?.videoInfo) {
           setVideoTitle(location.state.videoInfo.title || 'YouTube Transcript');
         }
 
-        // Get transcript from location state if available
+        // Check if transcript is already in location state
         if (location.state?.transcriptInfo?.full_text) {
           setTranscript(location.state.transcriptInfo.full_text);
           setLoading(false);
           return;
         }
 
-        // Get task ID from location state
-        const taskId = location.state?.taskId;
-        
-        if (!taskId) {
-          throw new Error('No task ID provided. Please process a YouTube video first.');
-        }
-
-        // Read the transcript file directly using the window.fs API
+        // Read the transcript file directly from the fixed path
         try {
-          // Path to the transcript file based on the provided information
-          const filePath = `downloads/full_transcript.txt`;
+          const filePath = 'downloads/full_transcript.txt';
           const fileContent = await window.fs.readFile(filePath, { encoding: 'utf8' });
           setTranscript(fileContent);
         } catch (fileErr) {
           console.error('Error reading transcript file:', fileErr);
-          
-          // Try alternative file path with task ID
-          try {
-            const altFilePath = `downloads/${taskId}_transcript.txt`;
-            const altFileContent = await window.fs.readFile(altFilePath, { encoding: 'utf8' });
-            setTranscript(altFileContent);
-          } catch (altFileErr) {
-            throw new Error('Could not read transcript file. The file may not exist or is inaccessible.');
-          }
+          throw new Error('Could not read transcript file. The file may not exist or is inaccessible.');
         }
       } catch (err) {
         console.error('Error loading transcript:', err);
