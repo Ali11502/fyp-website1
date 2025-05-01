@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Loader2 } from 'lucide-react';
-
+// -----------------------------------// pussssuuhhh
 const Transcript = () => {
   const location = useLocation();
   const [transcript, setTranscript] = useState('');
