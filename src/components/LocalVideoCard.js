@@ -62,7 +62,7 @@ const LocalVideoCard = () => {
   
     const formData = new FormData();
     formData.append('file', selectedFile);
-  
+    
     try {
       // 1. Upload the video
       const uploadResponse = await fetch('http://127.0.0.1:8000/api/upload-video', {
@@ -85,6 +85,8 @@ const LocalVideoCard = () => {
         if (!statusResponse.ok) throw new Error('Failed to fetch status');
   
         const statusData = await statusResponse.json();
+        console.log('Status update:', statusData); // Add logging
+        
         if (statusData.status === 'completed') {
           return statusData;
         } else if (statusData.status === 'failed') {
@@ -95,13 +97,18 @@ const LocalVideoCard = () => {
       };
   
       let result = null;
-      const maxAttempts = 10
-      const interval = 30000; // 3 seconds
+      const maxAttempts = 20; // Increase max attempts
+      const interval = 5000; // 5 seconds - more reasonable polling interval
       let attempts = 0;
+  
+      // Show a progress indicator to the user
+      setIsProcessing(true); // Assuming you have this state variable
   
       while (!result && attempts < maxAttempts) {
         result = await pollStatus();
         if (!result) {
+          // Update progress for user
+          setProgress(Math.min(95, (attempts / maxAttempts) * 100)); // Assuming you have this state
           await new Promise(res => setTimeout(res, interval));
           attempts++;
         }
@@ -124,17 +131,13 @@ const LocalVideoCard = () => {
         }
       });
   
+      setIsProcessing(false); // Clear processing state
       closeModal();
     } catch (error) {
+      setIsProcessing(false); // Clear processing state on error
       console.error('Error:', error);
       alert(error.message || 'Something went wrong');
     }
-  };
-  
-  
-
-  const triggerFileInput = () => {
-    fileInputRef.current.click();
   };
 
   return (
