@@ -81,64 +81,33 @@ const LocalVideoCard = () => {
           body: formData,
         });
   
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || `Server error: ${response.status}`);
-        }
-  
-        const data = await response.json();
-        
-        // Validate response structure
-        if (!data.task_id) {
-          throw new Error('Invalid response: missing task ID');
-        }
-        
-        return data;
-      } catch (err) {
-        console.error('Error uploading video:', err);
-        setError(err.message || 'Failed to upload video');
-        throw err;
-      } finally {
-        setIsLoading(false);
+      if (!uploadResponse.ok) {
+        throw new Error('Video upload failed');
       }
-    };
   
-    // Poll for status
-    const pollStatus = async (taskId) => {
-      try {
-        const response = await fetch(`${API_BASE_URL}/api/status/${taskId}`);
-        
-        if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          throw new Error(errorData.message || `Status check failed: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        
-        // Update progress if available
-        if (data.progress) {
-          setProgress(data.progress);
-        }
-        
-        // Validate response
-        if (!data.status) {
-          throw new Error('Invalid status response: missing status');
-        }
-        
-        // Validate complete response
-        if (data.status === 'completed' && (!data.video_info || !data.transcript_info)) {
-          throw new Error('Invalid complete response: missing video or transcript info');
-        }
-        
-        return data;
-      } catch (err) {
-        console.error('Error polling status:', err);
-        throw err;
-      }
-    };
+      const uploadData = await uploadResponse.json();
+      const taskId = uploadData.task_id;
   
-    // Poll with exponential backoff
-    const pollWithBackoff = async (taskId, maxAttempts = 10, initialInterval = 1000) => {
+      console.log('Upload complete, task ID:', taskId);
+  
+      // 2. Poll for completion
+      const pollStatus = async () => {
+        const statusResponse = await fetch(`http://127.0.0.1:8000/api/status/${taskId}`);
+        if (!statusResponse.ok) throw new Error('Failed to fetch status');
+  
+        const statusData = await statusResponse.json();
+        if (statusData.status === 'completed') {
+          return statusData;
+        } else if (statusData.status === 'failed') {
+          throw new Error('Video processing failed');
+        } else {
+          return null; // Still processing
+        }
+      };
+  
+      let result = null;
+      const maxAttempts = 10
+      const interval = 30000; // 3 seconds
       let attempts = 0;
       let interval = initialInterval;
       

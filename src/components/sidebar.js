@@ -13,7 +13,8 @@ import {
   ChevronRight,
   Star,
   Menu,
-  MessageSquareCodeIcon
+  MessageSquareCodeIcon,
+  Bookmark
 } from 'lucide-react';
 
 const Sidebar = () => {
@@ -32,7 +33,9 @@ const Sidebar = () => {
     '/highlights_reel',
     '/meetingminutes',
     '/podcasts',
+    '/flashcard',
     '/studyguide'
+    
   ];
 
   useEffect(() => {
@@ -51,6 +54,7 @@ const Sidebar = () => {
     { path: '/meetingminutes', icon: <Calendar size={20} />, label: 'Meeting Minutes' },
     { path: '/podcasts', icon: <Headphones size={20} />, label: 'Podcasts' },
     { path: '/studyguide', icon: <BookOpen size={20} />, label: 'Study Guide' },
+    { path: '/flashcard',     icon: <Bookmark size={20} />, label: 'Flashcards' },
   ];
 
   // Handle navigation

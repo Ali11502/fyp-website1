@@ -15,7 +15,8 @@ const Layout = ({ children }) => {
     '/highlights_reel', 
     '/meetingminutes', 
     '/podcasts', 
-    '/studyguide'
+    '/studyguide',
+    '/flashcard'
   ];
   
   // Check if the current route should have a sidebar
